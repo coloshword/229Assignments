@@ -78,4 +78,11 @@ $$
     - np.sum(axis=1): sums up row-wise (horizontally)
     - we use axis, to compute feature wise values. Each feature only cares about its specific column, so when we do np.sum(), we only want to compute it for each feature.
 
+### 2c)
+- deal with dataset 3
+- contains one example per row, with x1, x2,y, and t
+- first deal with ideal case, where we have access to the true t-labels for training. 
+- GOAL: write a log reg classifier with x1 and x2 as inputs, and train it with the t labels (true labels), and ignore y
 
+thoughts:
+- we can just throw the log reg module at it 
