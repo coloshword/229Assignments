@@ -19,7 +19,6 @@ class LogisticRegression(LinearModel):
             if np.linalg.norm(self.theta - prev_theta, ord=1) < self.eps:
                 break
         
-        print(self.theta)
     
     def sigmoid(self, x):
         return 1 / (1 + np.exp(-x))

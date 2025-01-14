@@ -85,4 +85,21 @@ $$
 - GOAL: write a log reg classifier with x1 and x2 as inputs, and train it with the t labels (true labels), and ignore y
 
 thoughts:
-- we can just throw the log reg module at it 
+- we can just throw the log reg module at it
+
+### 2d)
+    - done, just did the same things but with labels y instead of t 
+
+### 2e
+- estimate constant alpha 
+- looks like we can just sum it? Since V+ is the set of all x such that y(i) is 1, so its labelled 
+- so we want to make sure that the value of y is 1 
+
+- so how do we apply the "labeling" rate to the value?
+- Maybe for all values, we have to reduce  by the labeling rate, to get the actual value 
+- so what do we know? We know that 
+
+$$
+h(x) = \alpha P(t=1 | x)
+$$
+- so do we just take our current prediction and multiply it by alpha? Correction is just added to the problem. 
