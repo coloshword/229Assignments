@@ -60,7 +60,7 @@ def load_dataset(csv_path, label_col='y', add_intercept=False):
     return inputs, labels
 
 
-def plot(x, y, theta, save_path=None, correction=1.0):
+def plot(x, y, theta, save_path=None, correction=1.0, text=''):
     """Plot dataset and fitted logistic regression parameters.
     Args:
         x: Matrix of training examples, one per row.
@@ -73,7 +73,8 @@ def plot(x, y, theta, save_path=None, correction=1.0):
     plt.figure()
     plt.plot(x[y == 1, -2], x[y == 1, -1], 'bx', linewidth=2)
     plt.plot(x[y == 0, -2], x[y == 0, -1], 'go', linewidth=2)
-
+    if text:
+        plt.title(text)
     # Plot decision boundary (found by solving for theta^T x = 0)
     margin1 = (max(x[:, -2]) - min(x[:, -2]))*0.2
     margin2 = (max(x[:, -1]) - min(x[:, -1]))*0.2

@@ -100,6 +100,13 @@ thoughts:
 - so what do we know? We know that 
 
 $$
-h(x) = \alpha P(t=1 | x)
+P(y=1|x) = P(t=1 | x) / \alpha
 $$
 - so do we just take our current prediction and multiply it by alpha? Correction is just added to the problem. 
+- Looks like the best way is to just change the predict function 
+- Yep, dividing by the labeling rate solved the issue! 2e is almost done 
+
+
+
+### 2e part 2:
+- make three separate plots for parts 2c-e. For test set.
