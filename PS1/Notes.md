@@ -110,3 +110,38 @@ $$
 
 ### 2e part 2:
 - make three separate plots for parts 2c-e. For test set.
+
+### 3d: Poisson regression
+- We will apply Poisson regression to model the number of visitors per day. Note that applying Poisson regression in particular assumes that the data follows a poisson distribution whose natural parameter is a linear combination of the input features: 
+
+$$
+\eta = \theta^Tx
+$$
+
+- from 3c, the update rule for possion regression is 
+
+$$
+\theta^{t+1} = \theta - \alpha * (y - e^{\theta^Tx})x
+$$
+
+How the heck do we do predict? 
+- the canonical response function
+- The expected value of y given x is given by:
+
+$$
+E[y|x] = g^{-1}(x^T\theta)
+$$
+- where $g^{-1}$ is the canonical response function. This is because the canonical response function relates the natural parameter to its mean (expected value). Meaning $E[y|x] = g^{-1}(\eta)$. And guess what the assumption about glm is? It's $\eta = \theta^Tx$.
+
+- ok so in poisson regression, the canonical response function is 
+$$
+e^\eta 
+$$
+- so the relationship is 
+$$
+E[y|x] = e^\eta 
+$$
+- and we know the assumption so, plug that in we get the predict function
+$$
+E[y|x] = e^{x^T\theta}
+$$
