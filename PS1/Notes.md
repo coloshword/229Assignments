@@ -145,3 +145,52 @@ $$
 $$
 E[y|x] = e^{x^T\theta}
 $$
+
+### 5b Linear weighted regresssion
+- well we know that the update rule is 
+$$
+\theta^{t+1} = \theta - \alpha \nabla J(\theta)
+$$
+thoughts:
+- we need to create a diagonal matrix, W, so we can use numpy.diag(v), where v is a 1d
+vector
+
+- also, the important part is that there is no training loop, the loss function allows us to squeeze out theta, directly from the formula 
+- take the loss function
+$$
+\nabla J(\theta) = 2X^TWX\theta - 2X^TWy
+$$
+
+- set it equal to zero, because in convex function this is the global minimum
+
+$$
+2X^TWX\theta = 2X^TWy
+$$
+
+- isolate theta by multiplying the inverse
+$$
+\theta = (X^TWX)^{-1}X^TWy
+$$
+- so for each, all i have to do is find the right weights matrix, and directly plug in the value
+-  ok so think, weights matrix equation is 
+$$
+w^{(i)} = \exp\left( -\frac{\| x^{(i)} - x \|_2^2}{2\tau^2} \right).
+$$
+- so clearly we use an outer loop for all inner points. There should only be one pivot point, since the pivot point is the predict point
+- so it's sealed, hmm, our predict (pivot) point going to be (1, n), and our x^i should also be that
+- wait hold up, the predict is also a matrix, so we can't just assume that. So outer loop will be pivot points, and inner loop will be for weights. That'll give us a weights vector for every inner loop, I think...
+
+
+-- cot 
+- X is (200, 2)
+- we want weights to be (200, 200) 
+- there are 200 pivot points 
+- for each pivot point, we create a singular w scalar...
+- a single pivot point is (1, 2)
+- a single xi is (1, 2)
+
+- we get a w FOR EACH pivot point.
+- then use that for prediction
+- so pivot point is (1, 2), then our resulting w matrix is the size of x.
+
+- so for each pivot point, we create a separate W. W is a weights matrix the size of m,m, where m is the number of examples in the TRAINING set we kept behind. this works because in the equation for theta, the X is the training set NOT the test set, like we've been initially thinking
